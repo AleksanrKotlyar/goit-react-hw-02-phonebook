@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components';
+import { Box, Title, SubTitle } from './PhoneBook.styled';
 import ContactForm from './ContactForm';
 import { Filter } from './Filter';
 import { ContactList } from './ContactList';
@@ -43,11 +43,22 @@ class PhoneBook extends Component {
       contact.name.toLocaleLowerCase().includes(normFilter)
     );
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Box
+        bg="#1d571787"
+        p="20px"
+        mr="auto"
+        ml="auto"
+        mt="10px"
+        width="400px"
+        max-height="100vh"
+        border="1px solid green"
+        borderRadius="5px"
+        as="section"
+      >
+        <Title>Phonebook</Title>
         <ContactForm onSubmitForm={this.onClickBtnAddContact} />
 
-        <h2>Contacts</h2>
+        <SubTitle>Contacts</SubTitle>
         <Filter
           handleFilterOnInputChange={this.handleFilterOnInputChange}
           value={this.state.filter}
@@ -56,7 +67,7 @@ class PhoneBook extends Component {
           data={renderContactsList}
           handleOnDelete={this.handleOnDelete}
         />
-      </div>
+      </Box>
     );
   }
 }

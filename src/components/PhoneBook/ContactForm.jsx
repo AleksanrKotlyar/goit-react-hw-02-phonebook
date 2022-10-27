@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
+import { Box, SubmitBtn, LabelForm, InputForm } from './PhoneBook.styled';
+import PropTypes from 'prop-types';
 
 class ContactForm extends Component {
   state = {
@@ -22,10 +24,16 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleOnSubmit}>
-        <label>
+      <Box
+        as="form"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        onSubmit={this.handleOnSubmit}
+      >
+        <LabelForm>
           Name
-          <input
+          <InputForm
             type="text"
             name="name"
             value={this.state.name}
@@ -34,11 +42,10 @@ class ContactForm extends Component {
             required
             onChange={this.handleOnInputChange}
           />
-        </label>
-
-        <label>
+        </LabelForm>
+        <LabelForm>
           Number
-          <input
+          <InputForm
             type="tel"
             name="number"
             value={this.state.number}
@@ -47,13 +54,15 @@ class ContactForm extends Component {
             required
             onChange={this.handleOnInputChange}
           />
-        </label>
-        <button type="submit">
+        </LabelForm>
+        <SubmitBtn type="submit">
           <AiOutlineUserAdd /> Add contact
-        </button>
-      </form>
+        </SubmitBtn>
+      </Box>
     );
   }
 }
+
+ContactForm.propTypes = { onSubmitForm: PropTypes.func.isRequired };
 
 export default ContactForm;

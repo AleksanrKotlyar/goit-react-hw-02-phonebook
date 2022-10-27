@@ -1,3 +1,6 @@
+import { LabelForm, InputForm } from './PhoneBook.styled';
+import PropTypes from 'prop-types';
+
 export const Filter = ({ handleFilterOnInputChange, value }) => {
   const handleOnInputChange = e => {
     handleFilterOnInputChange(e.target.value);
@@ -5,9 +8,9 @@ export const Filter = ({ handleFilterOnInputChange, value }) => {
 
   return (
     <>
-      <label>
+      <LabelForm>
         Find contacts by name
-        <input
+        <InputForm
           type="text"
           name="filter"
           value={value}
@@ -16,7 +19,12 @@ export const Filter = ({ handleFilterOnInputChange, value }) => {
           required
           onChange={handleOnInputChange}
         />
-      </label>
+      </LabelForm>
     </>
   );
+};
+
+Filter.propTypes = {
+  handleFilterOnInputChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };

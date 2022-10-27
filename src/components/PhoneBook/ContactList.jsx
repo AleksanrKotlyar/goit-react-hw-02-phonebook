@@ -1,17 +1,24 @@
 import { AiOutlineUserDelete } from 'react-icons/ai';
+import { Box, ContactItem, ContactNumber, DeleteBtn } from './PhoneBook.styled';
+import PropTypes from 'prop-types';
 
 export const ContactList = ({ data, handleOnDelete }) => {
   return (
-    <ul>
+    <Box mr="auto" ml="auto" mt="20px" as="ul">
       {data.map(({ id, name, number }) => (
-        <li key={id}>
-          {name}: <span>{number}</span>{' '}
-          <button type="button" onClick={() => handleOnDelete(id)}>
+        <ContactItem key={id}>
+          {name}: <ContactNumber>{number}</ContactNumber>{' '}
+          <DeleteBtn type="button" onClick={() => handleOnDelete(id)}>
             <AiOutlineUserDelete />
             Delete
-          </button>
-        </li>
+          </DeleteBtn>
+        </ContactItem>
       ))}
-    </ul>
+    </Box>
   );
+};
+
+ContactList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleOnDelete: PropTypes.func.isRequired,
 };
